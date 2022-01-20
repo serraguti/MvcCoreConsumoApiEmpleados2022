@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MvcCoreConsumoApiEmpleados2022.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace MvcCoreConsumoApiEmpleados2022
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string apiempleados =
+                this.Configuration.GetValue<string>("ApiUrls:ApiEmpleados");
+            services.AddTransient<ServiceApiEmpleados>
+                (x => new ServiceApiEmpleados(apiempleados));
             services.AddControllersWithViews();
         }
 
