@@ -20,7 +20,8 @@ namespace MvcCoreConsumoApiEmpleados2022.Controllers
         public async Task<IActionResult> Index()
         {
             List<string> oficios = await this.service.GetOficiosAsync();
-            List<Empleado> empleados = await this.service.GetEmpleadosAsync();
+            List<Empleado> empleados = 
+                await this.service.GetEmpleadosAsync();
             ViewData["OFICIOS"] = oficios;
             return View(empleados);
         }
